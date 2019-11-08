@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="theme-color" content="#33b5e5">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/compiled-4.6.1.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="webrtc-adapter/out/adapter.js?sdfdsf=sdfdsf"></script>
+        <script src="js/RTCPeerConnection-v1.5.js?dsfds=fdsfds"></script>
+        <!--<script src="https://www.webrtc-experiment.com/socket.io.js"></script>-->
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="js/broadcast.js?dfsdf=dsfdsf"></script>
+        <script src="js/custom_cookie.js"></script>
+
+
+    </head>
+    <body class="fixed-sn mdb-skin-custom " data-spy="scroll" data-target="#scrollspy" data-offset="15" aria-busy="true">
+        <header>
+            <!-- Sidebar navigation -->
+            <div id="slide-out" class="side-nav sn-bg-4 mdb-sidenav fixed" style="transform: translateX(-100%);">
+                <ul class="custom-scrollbar list-unstyled ps ps--theme_default ps--active-y" style="max-height:100vh;" data-ps-id="cce8cd94-9009-61e9-f166-92b373a900a8">
+                    <!-- Logo -->
+                    <li class="logo-sn d-block waves-effect">
+                        <div class="text-center">
+                            <a class="pl-0" href="/">
+                                Virtual Classroom
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <ul id="side-menu" class="collapsible collapsible-accordion">
+                            <li id="menu-item-44502" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-44502">
+                                <a class="collapsible-header waves-effect" id="link-menu-item-44502" href="/users/profile"><i class="far fa-user"></i>Profile</a>
+                            </li>
+                            <!--<li id="menu-item-59439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439"><a class="collapsible-header waves-effect" href="/users/attendees"><i class="fas fa-users"></i>Attendees</a></li>-->
+                            <li id="menu-item-594329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/classes"><i class="fas fa-chalkboard-teacher"></i>Classes</a>
+                            </li>
+                            <li id="menu-item-594329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/uploads"><i class="fas fa-upload"></i>Uploads</a>
+                            </li>
+
+                            <li id="menu-item-343234" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/recordings"><i class="fas fa-microphone"></i>Recordings</a>
+                            </li>
+                        </ul>    
+                    </li>
+                    <!-- /. Side navigation links -->
+                    <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 205px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 52px;"></div></div></ul>
+                <div class="sidenav-bg mask-strong"></div>
+            </div>
+
+            <!-- Navbar-->
+            <nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar">
+                <!-- SideNav slide-out button -->
+                <div class="float-left">
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i><span class="sr-only" aria-hidden="true">Toggle side navigation</span></a>
+                </div>
+                <!-- Navbar links-->
+                <div class="mr-auto pl-2">
+                    <span class="d-none d-lg-inline-block">
+                        <strong> Virtual Class Room</strong>
+                    </span>
+                </div>
+
+                <!--Navigation icons-->
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">                    <!-- Login / register -->
+                    <!-- My account -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect" href="#" id="navbar-account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="user avatar" src="https://secure.gravatar.com/avatar/8ead8e2216a56a69b23ea8ab91b550e0?s=24&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8ead8e2216a56a69b23ea8ab91b550e0?s=48&amp;d=mm&amp;r=g 2x" class="avatar avatar-24 photo rounded-circle z-depth-0" height="24" width="24">   
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="userDropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">    
+                            <a id="navbar-static-profile" class="dropdown-item waves-effect waves-light" href="/users/profile">My profile</a>
+                            <a id="navbar-static-settings" class="dropdown-item waves-effect waves-light" href="/users/profile/setting">Settings</a>
+                            <a id="navbar-static-logout" class="dropdown-item waves-effect waves-light" href="/users/logout">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.Navbar-->
+            <div class="card card-intro sky-gradient">
+
+            </div>
+        </header>
+        <div class="content-container leftfix" >
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="participants" class="col-sm-12"></div>
+                </div>
+                <div class="col-sm-9">
+                    <div id="participant_list"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="loading">Loading&#8230;</div>
+
+        <script>
+
+            var room_string = getCookie("room_string");
+            var conference_name = getCookie("conference_name");
+            var is_presenter = getCookie("is_presenter");
+            console.log(room_string);
+            var config = {
+                openSocket: function (config) {
+                    //var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
+                    var SIGNALING_SERVER = '/';
+
+                    config.channel = config.channel || room_string.replace(/\/|:|#|%|\.|\[|\]/g, '');
+                    var sender = Math.round(Math.random() * 999999999) + 999999999;
+
+                    io.connect(SIGNALING_SERVER).emit('new-channel', {
+                        channel: config.channel,
+                        sender: sender
+                    });
+
+console.log(SIGNALING_SERVER + config.channel);
+                 var socket = io.connect(SIGNALING_SERVER + config.channel);
+                    //var socket = io.connect(SIGNALING_SERVER);
+
+                    socket.channel = config.channel;
+                    socket.on('connect', function () {
+                        if (config.callback)
+                            config.callback(socket);
+                    });
+
+                    socket.send = function (message) {
+                        socket.emit('message', {
+                            sender: sender,
+                            data: message
+                        });
+                    };
+
+                    socket.on('message', config.onmessage);
+                },
+                onRemoteStream: function (media) {
+
+                    //console.log(config);
+                    var video = media.video;
+                    var prev_remote_streams = getCookie("remote_streams");
+                    prev_remote_streams = prev_remote_streams + ',' + media.stream.id;
+
+                    setCookie("remote_streams", prev_remote_streams, 30);
+
+
+                    video.setAttribute('controls', true);
+                    video.setAttribute('id', media.stream.id);
+                    video.setAttribute('class', 'col-sm-6 embed-responsive embed-responsive-1by1');
+                    participants.insertBefore(video, participants.firstChild);
+                    video.play();
+                    if (config.isRemote == undefined) {
+                        $('#participant_list').html('<span>' + config.attachStream.id + '</span>');
+                    }
+                    $('.loading').hide();
+                    rotateVideo(video);
+                },
+                onRoomFound: function (room) {
+                    console.log(room);
+                    if (getCookie("is_attendee")) {
+                        broadcaster = getCookie("broadcaster");
+                        roomName = getCookie("roomName");
+                        room_token = getCookie("room_token");
+                        joinRoom(broadcaster, roomName, room_token);
+                    }
+                }
+            };
+
+            var broadcastUI = broadcast(config);
+            var participants = document.getElementById("participants") || document.body;
+
+            function joinRoom(broadcaster, roomName, room_token) {
+                config.isRemote = true;
+                console.log('user1');
+                captureUserMedia(function () {
+                    broadcastUI.joinRoom({
+                        roomToken: room_token,
+                        joinUser: broadcaster //tr.id
+                    });
+                });
+                hideUnnecessaryStuff();
+            }
+
+            function createButtonClickHandler() {
+                console.log('user2');
+                captureUserMedia(function () {
+                    broadcastUI.createRoom({
+                        roomName: conference_name
+                    });
+                });
+                hideUnnecessaryStuff();
+            }
+
+            function captureUserMedia(callback) {
+                console.log('user3');
+                var video = document.createElement('video');
+                video.setAttribute('autoplay', true);
+                video.setAttribute('controls', true);
+                //video.setAttribute('id', media.stream.id);
+                video.setAttribute('class', 'col-sm-6 embed-responsive embed-responsive-1by1');
+                participants.insertBefore(video, participants.firstChild);
+
+                getUserMedia({
+                    video: video,
+                    onsuccess: function (stream) {
+                        config.attachStream = stream;
+                        video.setAttribute('id', stream.id);
+
+//                        var prev_remote_streams = getCookie("remote_streams");
+//                        prev_remote_streams = prev_remote_streams+','+stream.id;                                     
+//                        setCookie("remote_streams", prev_remote_streams, 30);
+
+                        //save log in db
+                        setCookie("current_stream_id", stream.id, 30);
+                        saveLogDb(stream.id);
+
+                        //console.log(stream.id);
+                        callback && callback();
+                        video.setAttribute('muted', true);
+                        //rotateVideo(video);
+                    },
+                    onerror: function () {
+                        alert('unable to get access to your webcam.');
+                        callback && callback();
+                    }
+                });
+            }
+
+
+            if (is_presenter) {
+                createButtonClickHandler();
+            }
+
+            function hideUnnecessaryStuff() {
+                var visibleElements = document.getElementsByClassName('visible'),
+                        length = visibleElements.length;
+                for (var i = 0; i < length; i++) {
+                    visibleElements[i].style.display = 'none';
+                }
+            }
+
+            function rotateVideo(video) {
+                video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(0deg)';
+                setTimeout(function () {
+                    video.style[navigator.mozGetUserMedia ? 'transform' : '-webkit-transform'] = 'rotate(360deg)';
+                }, 1000);
+            }
+
+            function  saveLogDb(stream_id) {
+                $.ajax({
+                    url: 'data/savestreamlog',
+                    // type:'POST',
+                    data: {'stream_id': stream_id},
+                    success: function (response) {
+                        //console.log(response);
+                    }
+                });
+            }
+
+            function diff_second(update_on) {
+                var now_time = new Date();
+                cur_dist = (now_time.getTime() - new Date(update_on).getTime()) / 1000;
+                ff = Math.abs(Math.round(cur_dist));
+                //console.log(ff);
+                return ff;
+            }
+
+            var delay = '4000';
+            updateStreamLog();
+            function updateStreamLog() {
+                var myTimer = setInterval(function () {
+                    if (getCookie("current_stream_id")) {
+                        $.ajax({
+                            url: 'data/updatestreamlog',
+                            // type:'POST',
+                            async: true,
+                            beforeSend: function () {
+                                // setting a timeout
+                                clearInterval(myTimer);
+                            },
+                            data: {'stream_id': getCookie("current_stream_id")},
+                            success: function (response) {
+
+                                updateStreamLog();
+                            }
+                        });
+                    }
+
+                }, 4000);
+            }
+
+            getStreamLog();
+            function getStreamLog() {
+                var streamTimer = setInterval(function () {
+                    $.ajax({
+                        url: 'data/getstreamlog',                       
+                        async: true,
+                        beforeSend: function () {
+                            // setting a timeout
+                            clearInterval(streamTimer);
+                        },
+
+                        success: function (response) {
+                            
+                            if ($('#participants video').length < response.data.length) {
+                                $.each(response.data, function () {
+                                    that = this;
+
+                                    $.each($('#participants video'), function () {
+                                        if (that.stream_id == $(this).attr('id')) {
+
+                                            update_on = that.update_on;
+                                            if (diff_second(update_on) > 30) {
+                                                $('#' + that.stream_id).remove();
+                                            }
+                                        }
+                                    });
+
+                                });
+                                getStreamLog();
+                            }
+
+                        }
+                    });
+
+
+                }, 5000);
+            }
+
+
+
+
+
+        </script>
+
+        <script type="text/javascript" src="js/compiled.min.js?ver=4.6.1"></script>
+        <script type="text/javascript" src="js/footer-functions.js?ver=4.6.1"></script>

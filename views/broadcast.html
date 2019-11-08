@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="theme-color" content="#33b5e5">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/compiled-4.6.1.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="webrtc-adapter/out/adapter.js?sdfdsf=sdfdsf"></script>
+        <script src="js/RTCPeerConnection-v1.5.js?dsfds=fdsfds"></script>
+        <script src="https://www.webrtc-experiment.com/socket.io.js"></script>
+        <script src="js/broadcast.js?dfsdf=dsfdsf"></script>
+        <script src="js/custom_cookie.js"></script>
+
+
+
+    </head>
+    <body class="fixed-sn mdb-skin-custom " data-spy="scroll" data-target="#scrollspy" data-offset="15" aria-busy="true">
+        <header>
+            <!-- Sidebar navigation -->
+            <div id="slide-out" class="side-nav sn-bg-4 mdb-sidenav fixed" style="transform: translateX(-100%);">
+                <ul class="custom-scrollbar list-unstyled ps ps--theme_default ps--active-y" style="max-height:100vh;" data-ps-id="cce8cd94-9009-61e9-f166-92b373a900a8">
+                    <!-- Logo -->
+                    <li class="logo-sn d-block waves-effect">
+                        <div class="text-center">
+                            <a class="pl-0" href="/">
+                                Virtual Classroom
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <ul id="side-menu" class="collapsible collapsible-accordion">
+                            <li id="menu-item-44502" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-44502">
+                                <a class="collapsible-header waves-effect" id="link-menu-item-44502" href="/users/profile"><i class="far fa-user"></i>Profile</a>
+                            </li>
+                            <!--<li id="menu-item-59439" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439"><a class="collapsible-header waves-effect" href="/users/attendees"><i class="fas fa-users"></i>Attendees</a></li>-->
+                            <li id="menu-item-594329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/classes"><i class="fas fa-chalkboard-teacher"></i>Classes</a>
+                            </li>
+                            <li id="menu-item-594329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/uploads"><i class="fas fa-upload"></i>Uploads</a>
+                            </li>
+
+                            <li id="menu-item-343234" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-59439">
+                                <a class="collapsible-header waves-effect arrow-r" href="/users/recordings"><i class="fas fa-microphone"></i>Recordings</a>
+                            </li>
+                        </ul>    
+                    </li>
+                    <!-- /. Side navigation links -->
+                    <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; height: 205px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 52px;"></div></div></ul>
+                <div class="sidenav-bg mask-strong"></div>
+            </div>
+
+            <!-- Navbar-->
+            <nav class="navbar fixed-top navbar-expand-md navbar-light white double-nav scrolling-navbar">
+                <!-- SideNav slide-out button -->
+                <div class="float-left">
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i><span class="sr-only" aria-hidden="true">Toggle side navigation</span></a>
+                </div>
+                <!-- Navbar links-->
+                <div class="mr-auto pl-2">
+                    <span class="d-none d-lg-inline-block">
+                        <strong> Virtual Class Room</strong>
+                    </span>
+                </div>
+
+                <!--Navigation icons-->
+                <ul class="nav navbar-nav nav-flex-icons ml-auto">                    <!-- Login / register -->
+                    <!-- My account -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect" href="#" id="navbar-account" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img alt="user avatar" src="https://secure.gravatar.com/avatar/8ead8e2216a56a69b23ea8ab91b550e0?s=24&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/8ead8e2216a56a69b23ea8ab91b550e0?s=48&amp;d=mm&amp;r=g 2x" class="avatar avatar-24 photo rounded-circle z-depth-0" height="24" width="24">   
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="userDropdown" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">    
+                            <a id="navbar-static-profile" class="dropdown-item waves-effect waves-light" href="/users/profile">My profile</a>
+                            <a id="navbar-static-settings" class="dropdown-item waves-effect waves-light" href="/users/profile/setting">Settings</a>
+                            <a id="navbar-static-logout" class="dropdown-item waves-effect waves-light" href="/users/logout">Log Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.Navbar-->
+            <div class="card card-intro sky-gradient">
+
+            </div>
+        </header>
+        <div class="content-container leftfix" >
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!-- Material form login -->
+                    <div class="card">
+
+                        <h5 class="card-header info-color white-text text-center py-4">
+                            <strong>Broadcast</strong>
+                        </h5>
+
+                        <!--Card content-->
+                        <div class="card-body px-lg-5 pt-0">
+                            <div class="visible" id="broadcast_frm">
+                                <div class="md-form">  
+                                    <input type="hidden" value="" id="broadcast_strng">
+                                    <input type="text" id="conference-name" class="form-control" >
+                                    <label for="conference-name">Broadcast Name</label>  
+                                </div>
+                                <button id="start-conferencing1" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Start</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Material form login -->
+
+                    <div  class="table visible">
+                        <ul id="rooms-list" class="list-group">
+
+                        </ul>
+                    </div>
+                    <div id="participants"></div>
+
+                    <div class="progress md-progress primary-color-dark">
+                        <div class="indeterminate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="webrtc-adapter/out/adapter.js?sdfdsf=sdfdsf"></script>
+<script src="js/RTCPeerConnection-v1.5.js?dsfds=fdsfds"></script>
+<!--<script src="https://www.webrtc-experiment.com/socket.io.js"></script>-->
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="js/custom_cookie.js"></script>
+<script src="js/broadcast.js"></script>
+<script>
+    eraseCookie('last_room_token');
+    $(document).ready(function () {
+        if (!location.hash.replace('#', '').length) {
+            locationg = location.href.split('#')[0] + '#' + (Math.random() * 100).toString().replace('.', '');
+             $('.progress').hide();
+            $('#broadcast_strng').val(locationg);
+            $('#start-conferencing1').click(function () {
+                setCookie("room_string", $('#broadcast_strng').val(), 30);
+                setCookie("conference_name", $('#conference-name').val(), 30);
+                setCookie("is_presenter", 1, 30);
+                //location.href = '/whitebord';
+                
+                console.log("dsfdsf");
+                window.open('/whitebord', '_blank');
+                
+            });
+        }
+
+        if (!getCookie("is_presenter")) {
+            //$('#broadcast_frm').hide();
+        }
+        
+
+    });
+
+
+
+    var config = {
+        openSocket: function (config) {
+            //var SIGNALING_SERVER = 'https://socketio-over-nodejs2.herokuapp.com:443/';
+             var SIGNALING_SERVER = '/';
+
+            config.channel = '';//config.channel || location.href.replace(/\/|:|#|%|\.|\[|\]/g, '');
+            var sender = Math.round(Math.random() * 999999999) + 999999999;
+            console.log(config.channel);
+            io.connect(SIGNALING_SERVER).emit('new-channel', {
+                channel: config.channel,
+                sender: sender
+            });
+
+            var socket = io.connect(SIGNALING_SERVER + config.channel);
+
+            socket.channel = config.channel;
+            socket.on('connect', function () {
+                                
+                if (config.callback)
+                    config.callback(socket);
+            });
+
+            socket.send = function (message) {
+                socket.emit('message', {
+                    sender: sender,
+                    data: message
+                });
+            };
+
+            socket.on('message', config.onmessage);
+        },
+        onRemoteStream: function (media) {
+            var video = media.video;
+            video.setAttribute('controls', true);
+            console.log(participants.firstChild);
+            participants.insertBefore(video, participants.firstChild);
+
+            video.play();
+            rotateVideo(video);
+        },
+        onRoomFound: function (room) {
+            console.log("ddd");
+            var alreadyExist = document.getElementById(room.broadcaster);
+            if (alreadyExist)
+                return;
+
+            if (typeof roomsList === 'undefined')
+                roomsList = document.body;
+
+            if (getCookie("last_room_token") != undefined && getCookie("last_room_token") != room.broadcaster) {
+
+                var tr_id = getCookie("last_room_token");
+                if (tr_id) {
+                    deleteRow(tr_id);
+                }
+
+            }
+
+            setCookie("last_room_token", room.broadcaster, 30);
+
+            var rlist = document.createElement('li');
+            rlist.setAttribute('id', room.broadcaster);
+            rlist.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center');
+            rlist.innerHTML = room.roomName + '<span class="">\n\
+                        <button class="join btn btn-info btn-rounded btn-sm waves-effect waves-light auth-modal-toggle" onclick="joinRoom(`' + room.broadcaster + '`,`' + room.roomName + '`,`' + room.roomToken + '`)" id="' + room.roomToken + '">Join Room</button></span>';
+            console.log(rlist);
+            roomsList.insertBefore(rlist, roomsList.firstChild);
+            $('#broadcast_frm').hide();
+            $('.progress').hide();
+
+        }
+    };
+
+    function deleteRow(rowid)
+    {
+        var row = document.getElementById(rowid);
+
+        var table = row.parentNode;
+        while (table && table.tagName != 'TABLE')
+            table = table.parentNode;
+        if (!table)
+            return;
+        table.deleteRow(row.rowIndex);
+    }
+
+    function joinRoom(broadcaster, roomName, room_token) {
+        setCookie("broadcaster", broadcaster, 30);
+        setCookie("roomName", roomName, 30);
+        setCookie("room_token", room_token, 30);
+        setCookie("room_string", location.href, 30);
+        setCookie("is_attendee", 1, 30);
+
+        window.open('/whitebord', '_blank');
+    }
+    /* on page load: get public rooms */
+    var broadcastUI = broadcast(config);
+
+    /* UI specific */
+    var participants = document.getElementById("participants") || document.body;
+    var roomsList = document.getElementById('rooms-list');
+
+    setTimeout(function () {
+        console.log(broadcastUI);
+    }, 3000);
+
+
+</script>
+<script src="js/mdb.min.js"></script>

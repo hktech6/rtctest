@@ -1,0 +1,21 @@
+<script type="text/javascript" src="js/lib/adapter.js"></script><script type="text/javascript">
+    // <!&#91;CDATA&#91;
+
+// &#93;&#93;>
+</script>
+<script>
+    var constraints = {video: true};
+
+    function successCallback(localMediaStream) {
+        window.stream = localMediaStream; // stream available to console
+        var video = document.querySelector("video");
+        video.src = window.URL.createObjectURL(localMediaStream);
+        video.play();
+    }
+
+    function errorCallback(error) {
+        console.log("navigator.getUserMedia error: ", error);
+    }
+
+    navigator.getUserMedia(constraints, successCallback, errorCallback);
+</script>
